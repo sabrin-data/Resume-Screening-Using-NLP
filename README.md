@@ -1,79 +1,158 @@
 # 🤖 AI Resume Screening System (NLP)
 
-An AI-powered Resume Screening System built with **Python**, **Natural Language Processing (NLP)**, **Scikit-learn**, and **Streamlit**.
+An AI-powered Resume Screening System developed using **Python**, **Natural Language Processing (NLP)**, **Scikit-learn**, and **Streamlit**.
 
-The application predicts the most suitable job category from an uploaded resume (PDF) and automatically extracts technical and professional skills.
+The application automatically classifies uploaded resumes into job categories and extracts technical and professional skills from PDF resumes.
 
 ---
 
 # ✨ Features
 
-✅ Upload Resume in PDF format
-
-✅ Extract text automatically from PDF files
-
-✅ Predict Resume Category using Machine Learning
-
-✅ Extract 250+ Technical & Professional Skills
-
-✅ Modern and Interactive Streamlit Interface
-
-✅ Download Screening Results
-
-✅ Display Extracted Resume Text
+- 📄 Upload Resume (PDF)
+- 🤖 AI-powered Resume Classification
+- 💡 Automatic Skills Extraction
+- 📑 PDF Text Extraction
+- 🎨 Modern Streamlit User Interface
+- 📥 Download Prediction Results
+- 📃 View Extracted Resume Text
+- 📚 250+ Technical & Professional Skills Dictionary
 
 ---
 
-# 🖥️ Application Preview
+# 📸 Project Screenshots
 
-### 🏠 Home Page
+## 🏠 Home Page
 
-![Home](images/home_page.png)
-
----
-
-### 📂 Upload Resume
-
-![Upload](images/upload_resume.png)
+![Home Page](images/home_page.png)
 
 ---
 
-### 🎯 Prediction Result
+## 📂 Upload Resume
 
-![Prediction](images/prediction_result.png)
-
----
-
-### 💡 Skills Extraction
-
-![Skills](images/skills_extraction.png)
+![Upload Resume](images/upload_resume.png)
 
 ---
 
-# 📊 Machine Learning Workflow
+## 🎯 Prediction Result
 
-1. Data Collection
-2. Data Cleaning & Preprocessing
-3. Text Vectorization (TF-IDF)
-4. Model Training
-5. Model Evaluation
-6. Resume Classification
-7. Skills Extraction
-8. Streamlit Deployment
+![Prediction Result](images/prediction_result.png)
+
+---
+
+# 📊 Exploratory Data Analysis (EDA)
+
+## 📈 Category Distribution
+
+![Category Distribution](images/category_distribution.png)
+
+---
+
+## 📦 Word Count Distribution
+
+![Word Count Distribution](images/boxplot_word_count.png)
+
+---
+
+# 🤖 Model Evaluation
+
+## 📉 Model Comparison
+
+![Model Comparison](images/model_comparison.png)
+
+---
+
+## 🎯 Confusion Matrix
+
+![Confusion Matrix](images/confusion_matrix.png)
+
+---
+
+# 🔄 Project Workflow
+
+1. 📥 Resume Dataset Collection
+2. 🧹 Data Cleaning & Preprocessing
+3. 📊 Exploratory Data Analysis (EDA)
+4. 📝 TF-IDF Text Vectorization
+5. 🤖 Machine Learning Model Training
+6. 📈 Model Evaluation & Comparison
+7. 🏆 Best Model Selection
+8. 💻 Streamlit Application Development
+9. 📄 Resume Classification
+10. 💡 Automatic Skills Extraction
+
+---
+
+# 🧹 Data Preprocessing
+
+The resume dataset was cleaned and prepared before training by:
+
+- ✅ Removing duplicate records
+- ✅ Handling missing values
+- ✅ Removing punctuation
+- ✅ Removing numbers
+- ✅ Converting text to lowercase
+- ✅ Removing extra spaces
+- ✅ Text Tokenization
+- ✅ Lemmatization
+- ✅ TF-IDF Vectorization
+
+---
+
+# 🧠 Machine Learning Model
+
+Several Machine Learning models were trained and compared.
+
+🏆 **Best Model:** Linear Support Vector Classifier (LinearSVC)
+
+### 📊 Performance
+
+| Metric | Score |
+|--------|--------|
+| Accuracy | **71.23%** |
+| Macro F1 Score | **68.35%** |
+| Weighted F1 Score | **70.37%** |
+
+> **Note:** LinearSVC provides excellent classification performance but does not support probability prediction (`predict_proba`), therefore confidence scores are unavailable in the deployed application.
 
 ---
 
 # 🛠️ Technologies Used
 
-- 🐍 Python
-- 🤖 Scikit-learn
-- 📄 NLP (Natural Language Processing)
-- 📊 Pandas
-- 🔢 NumPy
-- 📈 Matplotlib
-- 🎨 Streamlit
-- 📑 PyPDF
-- 💾 Joblib
+### 👨‍💻 Programming
+
+- Python
+
+### 📊 Data Analysis
+
+- Pandas
+- NumPy
+- Matplotlib
+
+### 🤖 Machine Learning
+
+- Scikit-learn
+- TF-IDF
+- LinearSVC
+
+### 📝 Natural Language Processing
+
+- NLP
+- Text Cleaning
+- Tokenization
+- Lemmatization
+- Skills Extraction
+
+### 🌐 Web Application
+
+- Streamlit
+
+### 📄 PDF Processing
+
+- PyPDF
+
+### 💾 Model Deployment
+
+- Joblib
 
 ---
 
@@ -86,61 +165,39 @@ Resume-Screening-Using-NLP/
 ├── best_resume_classifier_model.pkl
 ├── requirements.txt
 ├── README.md
+├── resume_clean_dataset.csv
 ├── images/
 │   ├── home_page.png
 │   ├── upload_resume.png
 │   ├── prediction_result.png
-│   └── skills_extraction.png
-└── notebook.ipynb
+│   ├── category_distribution.png
+│   ├── model_comparison.png
+│   ├── confusion_matrix.png
+│   └── boxplot_word_count.png
+│
+├── 01_extract_resumes.ipynb
+├── 02_eda_analysis.ipynb
+├── 03_model_training.ipynb
+└── 04_prediction.ipynb
 ```
 
 ---
 
-# 🧹 Data Preprocessing
+# 🚀 Installation
 
-The resumes were preprocessed before training the model by:
-
-- Removing punctuation
-- Removing numbers
-- Converting text to lowercase
-- Removing stop words
-- Tokenization
-- Lemmatization
-- TF-IDF Vectorization
-
----
-
-# 🧠 Machine Learning Model
-
-Several classification algorithms were trained and compared.
-
-🏆 **Best Model:** Linear Support Vector Classifier (LinearSVC)
-
-**Performance**
-
-- Accuracy: **71.23%**
-- Macro F1 Score: **68.35%**
-- Weighted F1 Score: **70.37%**
-
-> ℹ️ **Note:** The deployed model is **LinearSVC**, which provides strong classification performance but does not support probability predictions (`predict_proba`). Therefore, confidence scores are not displayed.
-
----
-
-# 🚀 How to Run
-
-### Clone the repository
+Clone the repository
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/Resume-Screening-Using-NLP.git
 ```
 
-### Install dependencies
+Install the required packages
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run the application
+Run the application
 
 ```bash
 streamlit run app.py
@@ -148,26 +205,40 @@ streamlit run app.py
 
 ---
 
+# 🎯 Project Objectives
+
+- Build an AI-powered Resume Screening System.
+- Automatically classify resumes using NLP.
+- Extract professional skills from uploaded resumes.
+- Develop an interactive Streamlit web application.
+- Apply Machine Learning to solve a real-world HR problem.
+
+---
+
 # 📌 Future Improvements
 
-- 🔹 Train a Logistic Regression model to display confidence scores
-- 🔹 Support DOCX resumes
-- 🔹 Improve NLP preprocessing
-- 🔹 Add more resume categories
-- 🔹 Enhance the user interface
+- 📄 Support DOCX resumes.
+- 📊 Improve prediction accuracy.
+- 🤖 Train additional Machine Learning models.
+- 🌍 Deploy the application online.
+- 🎨 Enhance the user interface.
 
 ---
 
 # 👩‍💻 Author
 
-**Sabrin Khater**
+## Sabrin Khater
 
-💼 Aspiring Data Analyst & Junior Data Scientist
+**Entry-Level Data Analyst | Junior Data Scientist**
 
-🔗 LinkedIn: *(Add your LinkedIn profile)*
+📧 Email: sabrynkhatr696@gmail.com
 
-💻 GitHub: *(Add your GitHub profile)*
+💼 LinkedIn:
+https://www.linkedin.com/in/sabrin-data-science
+
+💻 GitHub:
+https://github.com/sabrin-data
 
 ---
 
-⭐ If you like this project, don't forget to give it a star!
+⭐ If you found this project useful, consider giving it a Star.
