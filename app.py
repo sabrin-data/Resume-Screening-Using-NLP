@@ -19,6 +19,9 @@ st.set_page_config(
 
 model = joblib.load("best_resume_classifier_model.pkl")
 
+# Check if the model supports probability prediction
+supports_probability = hasattr(model, "predict_proba")
+
 # =====================================
 # Extract Text From PDF
 # =====================================
@@ -34,18 +37,19 @@ def extract_text_from_pdf(uploaded_file):
         page_text = page.extract_text()
 
         if page_text:
-
             text += page_text + " "
 
     return " ".join(text.split())
 
 # =====================================
-# Skills Dictionary 
+# Skills Dictionary
 # =====================================
 
 skills = [
 
+# =====================================
 # Programming Languages
+# =====================================
 
 "python",
 "java",
@@ -64,7 +68,9 @@ skills = [
 "typescript",
 "javascript",
 
-# Web
+# =====================================
+# Web Development
+# =====================================
 
 "html",
 "css",
@@ -80,7 +86,9 @@ skills = [
 "django",
 "fastapi",
 
+# =====================================
 # Databases
+# =====================================
 
 "sql",
 "mysql",
@@ -93,7 +101,9 @@ skills = [
 "mariadb",
 "cassandra",
 
+# =====================================
 # Data Analysis
+# =====================================
 
 "pandas",
 "numpy",
@@ -106,58 +116,86 @@ skills = [
 "tableau",
 "excel",
 "google sheets",
+"data cleaning",
+"data preprocessing",
+"exploratory data analysis",
+"eda",
+"reporting",
+"dashboard",
+"dashboard creation",
+"data visualization",
 
+# =====================================
 # Machine Learning
+# =====================================
 
 "machine learning",
 "deep learning",
 "artificial intelligence",
 "ai",
-"supervised learning",
-"unsupervised learning",
-"reinforcement learning",
 "classification",
 "regression",
 "clustering",
+"supervised learning",
+"unsupervised learning",
+"reinforcement learning",
 "feature engineering",
+"feature selection",
 "model evaluation",
-
-# Libraries
-
-"scikit-learn",
-"tensorflow",
-"keras",
-"pytorch",
+"cross validation",
+"random forest",
+"decision tree",
+"logistic regression",
+"linear regression",
+"k-means",
+"svm",
 "xgboost",
 "lightgbm",
 "catboost",
-"opencv",
-"nltk",
-"spacy",
-"transformers",
 
+# =====================================
+# Deep Learning
+# =====================================
+
+"tensorflow",
+"keras",
+"pytorch",
+"cnn",
+"lstm",
+"gru",
+
+# =====================================
 # NLP
+# =====================================
 
 "natural language processing",
 "nlp",
 "bert",
 "gpt",
 "llm",
+"transformers",
 "tokenization",
 "stemming",
 "lemmatization",
 "sentiment analysis",
 "text classification",
+"tf-idf",
+"nltk",
+"spacy",
 
+# =====================================
 # Computer Vision
+# =====================================
 
-"cnn",
-"yolo",
+"opencv",
 "image processing",
 "object detection",
 "face recognition",
+"yolo",
 
+# =====================================
 # Cloud
+# =====================================
 
 "aws",
 "azure",
@@ -165,17 +203,21 @@ skills = [
 "gcp",
 "cloud computing",
 
+# =====================================
 # DevOps
+# =====================================
 
+"git",
+"github",
+"gitlab",
 "docker",
 "kubernetes",
-"github",
-"git",
-"gitlab",
 "jenkins",
 "ci/cd",
 
+# =====================================
 # Big Data
+# =====================================
 
 "hadoop",
 "spark",
@@ -183,29 +225,36 @@ skills = [
 "kafka",
 "airflow",
 
+# =====================================
 # Data Engineering
+# =====================================
 
 "etl",
 "data warehouse",
 "data lake",
 "snowflake",
 
-# BI
+# =====================================
+# Business Intelligence
+# =====================================
 
-"dashboard",
 "business intelligence",
-"data visualization",
 
+# =====================================
 # Office
+# =====================================
 
 "word",
+"excel",
 "powerpoint",
 "outlook",
 "access",
-"visio",
 "office",
+"visio",
 
+# =====================================
 # HR
+# =====================================
 
 "recruitment",
 "human resources",
@@ -213,14 +262,27 @@ skills = [
 "peoplesoft",
 "data entry",
 
+# =====================================
+# Evaluation Metrics
+# =====================================
+
+"accuracy",
+"precision",
+"recall",
+"f1 score",
+"roc auc",
+"confusion matrix",
+
+# =====================================
 # Soft Skills
+# =====================================
 
 "leadership",
 "communication",
 "problem solving",
+"critical thinking",
 "teamwork",
 "time management",
-"critical thinking",
 "presentation",
 "negotiation",
 "project management",
@@ -239,144 +301,114 @@ def extract_skills(text, skills_list):
     found_skills = []
 
     for skill in skills_list:
-
         if skill.lower() in text:
-
             found_skills.append(skill)
 
-    return sorted(list(set(found_skills)))
+    return sorted(set(found_skills))
 
 # =====================================
 # Professional CSS
 # =====================================
 
 st.markdown("""
-
 <style>
 
 .stApp{
-
 background:linear-gradient(
 135deg,
-#FFF5FA 0%,
-#FFEAF4 35%,
+#FFF7FB 0%,
+#FFEAF4 30%,
 #FDE2F3 70%,
-#FFF8FB 100%
-);
-
+#FFF7FB 100%);
 }
 
 .main-title{
-
-font-size:52px;
-
+font-size:54px;
 font-weight:800;
-
 text-align:center;
-
 color:#C2185B;
-
-margin-top:10px;
-
+margin-top:15px;
 margin-bottom:5px;
-
 }
 
 .sub-title{
-
 text-align:center;
-
 font-size:20px;
-
 color:#6A1B4D;
-
-margin-bottom:40px;
-
+margin-bottom:35px;
 }
 
 .block{
-
 background:white;
-
 padding:25px;
-
 border-radius:18px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-
+box-shadow:0 8px 20px rgba(0,0,0,.08);
 margin-bottom:25px;
-
 }
 
 div[data-testid="stFileUploader"]{
-
 background:white;
-
 padding:20px;
-
 border-radius:18px;
-
-border:2px dashed #E91E63;
-
+border:2px dashed #EC407A;
+box-shadow:0 6px 15px rgba(0,0,0,.05);
 }
 
 .stButton>button{
-
 background:#E91E63;
-
 color:white;
-
 border:none;
-
-border-radius:10px;
-
+border-radius:12px;
+padding:10px 22px;
 font-weight:bold;
+font-size:16px;
+transition:0.3s;
+}
 
+.stButton>button:hover{
+background:#C2185B;
+}
+
+div[data-testid="metric-container"]{
+background:white;
+border-radius:15px;
+padding:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
 </style>
-
 """, unsafe_allow_html=True)
 
 # =====================================
 # Header
 # =====================================
 
-st.markdown(
-"""
+st.markdown("""
 <div class='main-title'>
 🤖 AI Resume Screening System
 </div>
-""",
-unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
-st.markdown(
-"""
+st.markdown("""
 <div class='sub-title'>
-Upload your Resume and let AI predict the job category and extract your professional skills.
+Upload your Resume and let AI predict the most suitable job category and automatically extract your professional skills.
 </div>
-""",
-unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
 # =====================================
 # Upload PDF
 # =====================================
 
 uploaded_file = st.file_uploader(
-
-"📄 Upload Resume (PDF)",
-
-type=["pdf"]
-
+    "📄 Upload Resume (PDF)",
+    type=["pdf"]
 )
 
 # =====================================
-# Complete Skills Dictionary 
+# Extra Skills
 # =====================================
 
-skills.extend([
+extra_skills = [
 
 # Data Science
 "data analysis",
@@ -398,7 +430,7 @@ skills.extend([
 "roc curve",
 "auc",
 
-# Python Libraries
+# Python
 "joblib",
 "pickle",
 "beautifulsoup",
@@ -480,8 +512,8 @@ skills.extend([
 # Office
 "microsoft office",
 "excel advanced",
-"vlookup",
 "pivot table",
+"vlookup",
 "xlookup",
 
 # Soft Skills
@@ -496,8 +528,10 @@ skills.extend([
 "mentoring",
 "coaching"
 
-])
+]
 
+# إزالة التكرار إن وجد
+skills = list(set(skills + extra_skills))
 # =====================================
 # After Upload
 # =====================================
@@ -509,7 +543,7 @@ if uploaded_file is not None:
     # Extract text
     text = extract_text_from_pdf(uploaded_file)
 
-    # Predict category
+    # Predict Category
     prediction = model.predict([text])[0]
 
     # Confidence Score
@@ -517,9 +551,9 @@ if uploaded_file is not None:
 
     if hasattr(model, "predict_proba"):
         probabilities = model.predict_proba([text])[0]
-        confidence = probabilities.max() * 100
+        confidence = round(probabilities.max() * 100, 2)
 
-    # Extract skills
+    # Extract Skills
     found_skills = extract_skills(text, skills)
 
     # =====================================
@@ -529,103 +563,104 @@ if uploaded_file is not None:
     col1, col2 = st.columns(2)
 
     with col1:
-
-        st.markdown("### 🎯 Predicted Category")
-
+        st.markdown("## 🎯 Predicted Category")
         st.success(prediction)
 
     with col2:
-
-        st.markdown("### 📊 Confidence Score")
+        st.markdown("## 📊 Confidence Score")
 
         if confidence is not None:
-
             st.metric(
                 label="Prediction Confidence",
-                value=f"{confidence:.2f}%"
+                value=f"{confidence}%"
             )
-
         else:
-
-            st.info("Confidence score is not available for this model.")
+            st.warning("This model does not support confidence scores.")
 
     st.markdown("---")
-
-    st.markdown("### 💡 Extracted Skills")
-
-    st.write(f"**Total Skills Found:** {len(found_skills)}")
 
     # =====================================
-    st.markdown("---")
+    # Extracted Skills
+    # =====================================
 
-    st.markdown("### 💡 Extracted Skills")
+    st.markdown("## 💡 Extracted Skills")
     st.write(f"**Total Skills Found:** {len(found_skills)}")
 
     if found_skills:
 
-        tags_html = ""
+        tags_html = """
+<div style="
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:10px;
+">
+"""
 
         for skill in found_skills:
+
             tags_html += f"""
-            <span style="
-                display:inline-block;
-                background:#F8BBD0;
-                color:#880E4F;
-                padding:10px 18px;
-                margin:6px;
-                border-radius:25px;
-                font-weight:bold;
-                font-size:16px;
-            ">
-                {skill}
-            </span>
-            """
+<div style="
+background:linear-gradient(135deg,#EC407A,#D81B60);
+color:white;
+padding:10px 20px;
+border-radius:999px;
+font-weight:600;
+font-size:16px;
+box-shadow:0 4px 10px rgba(0,0,0,.15);
+">
+✅ {skill}
+</div>
+"""
+
+        tags_html += "</div>"
 
         st.markdown(tags_html, unsafe_allow_html=True)
 
     else:
+
         st.warning("No skills were detected in this resume.")
+
+    st.markdown("---")
 
     # =====================================
     # Download Results
     # =====================================
 
+    result_text = f"""
+=========================
+AI Resume Screening Report
+=========================
+
+Predicted Category:
+{prediction}
+
+Confidence Score:
+"""
+
     if confidence is not None:
-        result_text = f"""
-AI Resume Screening Result
-
-Predicted Category:
-{prediction}
-
-Confidence Score:
-{confidence:.2f}%
-
-Extracted Skills:
-"""
+        result_text += f"{confidence}%\n"
     else:
-        result_text = f"""
-AI Resume Screening Result
+        result_text += "Not Available\n"
 
-Predicted Category:
-{prediction}
-
-Confidence Score:
-Not Available
-
-Extracted Skills:
-"""
+    result_text += "\nExtracted Skills:\n"
 
     for skill in found_skills:
-        result_text += f"\n- {skill}"
+        result_text += f"• {skill}\n"
 
     st.download_button(
         "📥 Download Results",
-        result_text,
-        "resume_screening_result.txt",
-        "text/plain"
+        data=result_text,
+        file_name="resume_screening_result.txt",
+        mime="text/plain"
     )
 
+    # =====================================
+    # Show Resume Text
+    # =====================================
+
     with st.expander("📄 Show Extracted Resume Text"):
+
         st.text_area(
             "",
             text,
@@ -636,7 +671,7 @@ Extracted Skills:
 # Footer
 # =====================================
 
-st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("""
 
@@ -646,11 +681,11 @@ st.markdown("""
 color:#9E9E9E;
 font-size:15px;">
 
-🤖 AI Resume Screening System
+🤖 <b>AI Resume Screening System</b>
 
-<br>
+<br><br>
 
-Built with ❤️ using Python, NLP, Scikit-learn and Streamlit
+Built with ❤️ using Python • NLP • Scikit-learn • Streamlit
 
 </div>
 
