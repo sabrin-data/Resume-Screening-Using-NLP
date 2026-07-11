@@ -6,6 +6,14 @@ The application automatically classifies uploaded resumes into job categories an
 
 ---
 
+# 🚀 Live Demo
+
+🌐 **Try the application online:**
+
+**https://resume-screening-using-nlp-bm2ear2njp4rqhickuof5q.streamlit.app/**
+
+---
+
 # ✨ Features
 
 - 📄 Upload Resume (PDF)
@@ -112,30 +120,26 @@ Several Machine Learning models were trained and compared.
 | Macro F1 Score | **68.35%** |
 | Weighted F1 Score | **70.37%** |
 
-> **Note:** LinearSVC provides excellent classification performance but does not support probability prediction (`predict_proba`), therefore confidence scores are unavailable in the deployed application.
+> **Note:** LinearSVC provides excellent classification performance but does not support probability prediction (`predict_proba`). Therefore, confidence scores are unavailable in the deployed application.
 
 ---
 
 # 🛠️ Technologies Used
 
 ### 👨‍💻 Programming
-
 - Python
 
 ### 📊 Data Analysis
-
 - Pandas
 - NumPy
 - Matplotlib
 
 ### 🤖 Machine Learning
-
 - Scikit-learn
 - TF-IDF
 - LinearSVC
 
 ### 📝 Natural Language Processing
-
 - NLP
 - Text Cleaning
 - Tokenization
@@ -143,15 +147,12 @@ Several Machine Learning models were trained and compared.
 - Skills Extraction
 
 ### 🌐 Web Application
-
 - Streamlit
 
 ### 📄 PDF Processing
-
 - PyPDF
 
 ### 💾 Model Deployment
-
 - Joblib
 
 ---
@@ -185,19 +186,19 @@ Resume-Screening-Using-NLP/
 
 # 🚀 Installation
 
-Clone the repository
+### Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Resume-Screening-Using-NLP.git
+git clone https://github.com/sabrin-data/Resume-Screening-Using-NLP.git
 ```
 
-Install the required packages
+### Install the required packages
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the application
+### Run the application
 
 ```bash
 streamlit run app.py
@@ -219,8 +220,8 @@ streamlit run app.py
 
 - 📄 Support DOCX resumes.
 - 📊 Improve prediction accuracy.
-- 🤖 Train additional Machine Learning models.
-- 🌍 Deploy the application online.
+- 🤖 Add confidence score using probability-based models.
+- 🌍 Support multiple resume languages.
 - 🎨 Enhance the user interface.
 
 ---
@@ -233,12 +234,12 @@ streamlit run app.py
 
 📧 Email: sabrynkhatr696@gmail.com
 
-💼 LinkedIn:
-https://www.linkedin.com/in/sabrin-data-science
+💼 LinkedIn: https://www.linkedin.com/in/sabrin-data-science
 
-💻 GitHub:
-https://github.com/sabrin-data
+💻 GitHub: https://github.com/sabrin-data
+
+🌐 Live Demo: https://resume-screening-using-nlp-bm2ear2njp4rqhickuof5q.streamlit.app/
 
 ---
 
-⭐ If you found this project useful, consider giving it a Star.
+⭐ If you found this project useful, consider giving it a ⭐ Star!
